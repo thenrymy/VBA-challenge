@@ -43,6 +43,9 @@ Sub Multiple_year_stock_data()
                 yearlyChange = closeYear - openYear
                 ws.Cells(tableRow, 10).Value = yearlyChange
                 
+                'format to two decimals
+                ws.Cells(tableRow, 10).NumberFormat = "0.00"
+                
                     'set colour condition for yearly change
                     If yearlyChange < 0 Then
                     
@@ -87,8 +90,8 @@ Sub Multiple_year_stock_data()
         'create headers for bonus table
         ws.Range("P1").Value = "Ticker"
         ws.Range("Q1").Value = "Value"
-        ws.Range("O2").Value = "Greatest % increase"
-        ws.Range("O3").Value = "Greatest % decrease"
+        ws.Range("O2").Value = "Greatest % Increase"
+        ws.Range("O3").Value = "Greatest % Decrease"
         ws.Range("O4").Value = "Greatest Total Volume"
         
         'create loop to search summary table
@@ -182,6 +185,9 @@ Sub Multiple_year_stock_data()
         Next i
 
  '_________________
+            
+    'autofit columns
+    ws.Range("O:Q").Columns.AutoFit
             
     Next ws
     
